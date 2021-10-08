@@ -7,6 +7,6 @@
     force_no_map_script =  false
     auto_cleanup =         true
     packages_requirements = [
-        "trunks-core",
+        "trunks-nanos-core",
     ]
     assets_requirements = []

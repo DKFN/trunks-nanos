@@ -6,5 +6,5 @@ trunksWindow = WebUI(
         true,
         0,
         0,
-        "trunks-core"
+        "trunks-nanos-core"
 )

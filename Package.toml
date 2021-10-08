@@ -1,0 +1,12 @@
+[package]
+    name =                 "trunks-nanos"
+    author =               "DeadlyKungFu.Ninja#8294"
+    version =              "0.0.1"
+    image =                ""
+    type =                 "script"
+    force_no_map_script =  false
+    auto_cleanup =         true
+    packages_requirements = [
+        "trunks-core",
+    ]
+    assets_requirements = []

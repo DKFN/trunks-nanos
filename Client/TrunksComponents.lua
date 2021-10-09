@@ -39,6 +39,7 @@ function Trunks:New(componentType, maybeOptions)
     end
     -- End internals
 
+    -- TODO: Split functions depending of component
     -- Getters and setters boilerplate
         --Positionning
         newComponent.SetPosX = function(self, x)
@@ -78,20 +79,57 @@ function Trunks:New(componentType, maybeOptions)
         end
 
         -- Component properties
+        -- Inputs
         newComponent.SetText = function(self, text)
             self.data.text = text
             self.__update(self)
         end
 
         newComponent.SetMaxValue = function(self, mv)
-            self.maxValue = mv
+            self.data.maxValue = mv
             self.__update(self)
         end
 
         newComponent.SetValue = function(self, v)
-            self.value = v
+            self.data.value = v
             self.__update(self)
         end
+
+        newComponent.SetLoading = function(self, value)
+            self.data.isLoading = value
+            self.__update(self)
+        end
+
+        -- Icon
+        newComponent.SetIcon = function(self, v)
+            self.data.icon = v
+            self.__update(self)
+        end
+
+        -- Javascript
+        newComponent.SetSrc = function(self, v)
+            self.data.src = v
+            self.__update(self)
+        end
+
+        newComponent.SetContent = function(self, v)
+            self.data.content = v
+            self.__update(self)
+        end
+
+        -- Radios and select can have multiple values
+        newComponent.AddValue = function(self, v)
+            if (self.data.value == nil) then self.data.value = {} end
+            self.data.value = table.insert(self.data.value, v)
+            self.__update(self)
+        end
+
+        newComponent.GetValue = function(self)
+            return self.data.value
+        end
+
+        -- Foolproof bindings
+        newComponent.Value = newComponent.GetValue
     -- End getters and setters
 
     -- Utility functions
@@ -114,7 +152,24 @@ local routerLookupTable = {
     end,
     ["onChange"] = function(component, event)
         if (component.OnChange == nil) then return end
+        component.data.value = event.value
         component.OnChange(event.value)
+    end,
+    ["onMouseEnter"] = function(component, event)
+        if (component.OnOver == nil) then return end
+        component.OnOver()
+    end,
+    ["onEnter"] = function(component, event)
+        if (component.OnEnter == nil) then return end
+        component.OnEnter()
+    end,
+    ["onEscape"] = function(component, event)
+        if (component.OnEscape == nil) then return end
+        component.OnEscape()
+    end,
+    ["onFocus"] = function(component, event)
+        if (component.OnFocus == nil) then return end
+        component.OnFocus()
     end
 }
 
@@ -138,4 +193,3 @@ trunksWindow:Subscribe("TRUNKS_UI_EVENT", function(payload)
 
     handler(component, event)
 end)
-

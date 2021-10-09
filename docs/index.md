@@ -49,5 +49,13 @@ Now that you have everything up and running you can go further with:
 #### Tutorials
 -- TODO
 
+- <strike> [Your first GUI](https://dkfn.github.io/trunks-nanos/tuts/gui1) </strike>
+- <strike> [Your first complex GUI](https://dkfn.github.io/trunks-nanos/tuts/gui2) </strike>
+- <strike> [Displaying images](https://dkfn.github.io/trunks-nanos/tuts/images) </strike>
+- <strike> [Customize the default theme](https://dkfn.github.io/trunks-nanos/tuts/customizecss) </strike>
+- <strike> [Import custom fonts](https://dkfn.github.io/trunks-nanos/tuts/customizefonts) </strike>
+
 #### API Specifications
+- [Components complete list](https://dkfn.github.io/trunks-nanos/componentslist)
+
 -- TODO

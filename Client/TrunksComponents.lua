@@ -9,6 +9,13 @@ local lastId = 1
 
 local availableComponents = { "Box", "Button" }
 
+-- TODO Implement this stuff kinda like elements:
+-- https://wiki.facepunch.com/gmod/Global.Derma_Message
+-- https://wiki.facepunch.com/gmod/Global.Derma_Query
+-- https://wiki.facepunch.com/gmod/Global.Derma_StringRequest
+
+-- TODO Add opacity param
+
 -- Factory
 function Trunks:New(componentType, maybeOptions)
     local newComponent = {}
@@ -39,6 +46,22 @@ function Trunks:New(componentType, maybeOptions)
     end
     -- End internals
 
+    -- Externals
+    newComponent.Hide = function(self)
+        self.data.hidden = true
+        self.__update(self)
+    end
+
+    newComponent.Show = function(self)
+        self.data.hidden = false
+        self.__update(self)
+    end
+
+    newComponent.Destroy = function(self)
+        trunksWindow:CallEvent("TRUNKS_DELETE_COMPONENT", JSON.stringify(self.data))
+    end
+    --End externals --
+
     -- TODO: Split functions depending of component
     -- Getters and setters boilerplate
         --Positionning
@@ -49,6 +72,11 @@ function Trunks:New(componentType, maybeOptions)
 
         newComponent.SetPosY = function(self, y)
             self.data.position.posY = y
+            self.__update(self)
+        end
+
+        newComponent.SetParent = function(self, uparent)
+            self.data.position.parent = uparent.data.id
             self.__update(self)
         end
 
@@ -124,6 +152,22 @@ function Trunks:New(componentType, maybeOptions)
             self.__update(self)
         end
 
+        -- Alerts commons
+        newComponent.SetTitle = function(self, v)
+            self.data.title = v
+            self.__update(self)
+        end
+
+        newComponent.SetCancellable = function(self, v)
+            self.data.cancellable = v
+            self.__update(self)
+        end
+
+        newComponent.SetHasBlur = function(self, v)
+            self.data.hasBlur = v
+            self.__update(self)
+        end
+
         newComponent.GetValue = function(self)
             return self.data.value
         end
@@ -133,10 +177,6 @@ function Trunks:New(componentType, maybeOptions)
     -- End getters and setters
 
     -- Utility functions
-    newComponent.Show = function(self)
-        Package.Log("Hey I should show now !")
-        Package.Log(NanosUtils.Dump(self))
-    end
     -- End utility functions
 
     -- Indexing component for routing
@@ -145,14 +185,33 @@ function Trunks:New(componentType, maybeOptions)
     return newComponent
 end
 
+function Trunks:Focus()
+    Client.SetInputEnabled(false)
+    trunksWindow:BringToFront()
+    trunksWindow:SetFocus()
+end
+
+function Trunks:UnFocus()
+    Client.SetInputEnabled(true)
+end
+
+function Trunks:EnableDebug()
+    trunksWindow:CallEvent("TRUNKS_DEBUG_MODE")
+end
+
 local routerLookupTable = {
+    -- Primitive components
     ["onClick"] = function(component, event)
         if (component.OnClick == nil) then return end
         component.OnClick()
     end,
     ["onChange"] = function(component, event)
+        if (event.value == nil) then
+            component:SetValue(nil)
+        else
+            component:SetValue(event.value)
+        end
         if (component.OnChange == nil) then return end
-        component.data.value = event.value
         component.OnChange(event.value)
     end,
     ["onMouseEnter"] = function(component, event)
@@ -168,9 +227,26 @@ local routerLookupTable = {
         component.OnEscape()
     end,
     ["onFocus"] = function(component, event)
+        Trunks:Focus()
         if (component.OnFocus == nil) then return end
         component.OnFocus()
+    end,
+    ["onBlur"] = function(component, event)
+        Trunks:UnFocus()
+        if (component.OnFocus == nil) then return end
+        component.OnFocus()
+    end,
+
+    --Alerts
+    ["onClickOk"] = function(component, event)
+        if (component.OnClickOk == nil) then return end
+        component.OnClickOk()
+    end,
+    ["onClickCancel"] = function(component, event)
+        if (component.OnClickCancel == nil) then return end
+        component.OnClickCancel()
     end
+
 }
 
 -- Event routing
@@ -191,5 +267,5 @@ trunksWindow:Subscribe("TRUNKS_UI_EVENT", function(payload)
         return
     end
 
-    handler(component, event)
+    handler(component, event.eventPayload)
 end)

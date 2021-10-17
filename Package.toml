@@ -16,7 +16,7 @@
     auto_cleanup =         true
     # packages requirements
     packages_requirements = [
-        "trunks-nanos-core",
+        
     ]
     # asset packs requirements
     assets_requirements = [

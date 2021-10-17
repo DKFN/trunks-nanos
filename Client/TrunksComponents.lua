@@ -24,7 +24,11 @@ function Trunks:New(componentType, maybeOptions)
     -- Who cares ? \o/
 
     -- Assigning base parameters
-    newComponent.data = {}
+    local finalBaseData = {}
+    if (maybeOptions ~= nil) then
+        finalBaseData = maybeOptions
+    end
+    newComponent.data = finalBaseData
     newComponent.data.id = lastId
     lastId = lastId + 1
     newComponent.data.component = componentType
@@ -59,12 +63,19 @@ function Trunks:New(componentType, maybeOptions)
 
     newComponent.Destroy = function(self)
         trunksWindow:CallEvent("TRUNKS_DELETE_COMPONENT", JSON.stringify(self.data))
+        self = nil
     end
     --End externals --
 
     -- TODO: Split functions depending of component
     -- Getters and setters boilerplate
         --Positionning
+        newComponent.SetPos = function(self, x, y)
+            self.data.position.posX = x
+            self.data.position.posY = y
+            self.__update(self)
+        end
+
         newComponent.SetPosX = function(self, x)
             self.data.position.posX = x
             self.__update(self)
@@ -77,6 +88,12 @@ function Trunks:New(componentType, maybeOptions)
 
         newComponent.SetParent = function(self, uparent)
             self.data.position.parent = uparent.data.id
+            self.__update(self)
+        end
+
+        newComponent.SetSize = function(self, height, width)
+            self.data.position.height = height
+            self.data.position.width = width
             self.__update(self)
         end
 

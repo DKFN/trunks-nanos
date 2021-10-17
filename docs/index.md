@@ -9,13 +9,7 @@ DeadlyKungFu.Ninja#8294 or via Nanos World discord
 
 ### Installation
 
-You will need two packages to use Trunks in nanos world
-- [trunks-nanos](https://github.com/DKFN/trunks-nanos) : The Lua API for Nanos world
-- [trunks-nanos-core](https://github.com/DKFN/trunks-nanos-core) : The built version of the GUI and some javascript adapters for the game
-
-In the end, your package folder should look like this:
-
--- Insert image of script
+Download the repository content and add it to your packages
 
 Finally, add  `trunks-nanos` in your script's `Package.toml`
 ```toml
@@ -49,6 +43,7 @@ Now that you have everything up and running you can go further with:
 #### Tutorials
 -- TODO
 
+- [Hellow world](https://dkfn.github.io/trunks-nanos/tuts/helloWorld)
 - <strike> [Your first GUI](https://dkfn.github.io/trunks-nanos/tuts/gui1) </strike>
 - <strike> [Your first complex GUI](https://dkfn.github.io/trunks-nanos/tuts/gui2) </strike>
 - <strike> [Displaying images](https://dkfn.github.io/trunks-nanos/tuts/images) </strike>

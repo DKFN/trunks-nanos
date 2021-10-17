@@ -6,14 +6,6 @@ Trunks = {}
 local ComponentsLists = {}
 
 local lastId = 1
-
-local availableComponents = { "Box", "Button" }
-
--- TODO Implement this stuff kinda like elements:
--- https://wiki.facepunch.com/gmod/Global.Derma_Message
--- https://wiki.facepunch.com/gmod/Global.Derma_Query
--- https://wiki.facepunch.com/gmod/Global.Derma_StringRequest
-
 -- TODO Add opacity param
 
 -- Factory
@@ -74,53 +66,63 @@ function Trunks:New(componentType, maybeOptions)
             self.data.position.posX = x
             self.data.position.posY = y
             self.__update(self)
+            return self
         end
 
         newComponent.SetPosX = function(self, x)
             self.data.position.posX = x
             self.__update(self)
+            return self
         end
 
         newComponent.SetPosY = function(self, y)
             self.data.position.posY = y
             self.__update(self)
+            return self
         end
 
         newComponent.SetParent = function(self, uparent)
             self.data.position.parent = uparent.data.id
             self.__update(self)
+            return self
         end
 
         newComponent.SetSize = function(self, height, width)
             self.data.position.height = height
             self.data.position.width = width
             self.__update(self)
+            return self
         end
 
         newComponent.SetWidth = function(self, width)
             self.data.position.width = width
             self.__update(self)
+            return self
         end
 
         newComponent.SetHeight = function(self, height)
             self.data.position.height = height
             self.__update(self)
+            return self
         end
 
         -- Styling
         newComponent.SetColorStyle = function(self, color)
             self.data.styling.color = color
             self.__update(self)
+            return self
         end
 
         newComponent.SetProportion = function(self, prop)
             self.data.styling.proportion = prop
             self.__update(self)
+            return self
         end
 
         newComponent.SetFullWidth = function(self, fw)
             self.data.styling.isFullWidth = fw
             self.__update(self)
+            return self
         end
 
         -- Component properties
@@ -128,38 +130,45 @@ function Trunks:New(componentType, maybeOptions)
         newComponent.SetText = function(self, text)
             self.data.text = text
             self.__update(self)
+            return self
         end
 
         newComponent.SetMaxValue = function(self, mv)
             self.data.maxValue = mv
             self.__update(self)
+            return self
         end
 
         newComponent.SetValue = function(self, v)
             self.data.value = v
             self.__update(self)
+            return self
         end
 
         newComponent.SetLoading = function(self, value)
             self.data.isLoading = value
             self.__update(self)
+            return self
         end
 
         -- Icon
         newComponent.SetIcon = function(self, v)
             self.data.icon = v
             self.__update(self)
+            return self
         end
 
         -- Javascript
         newComponent.SetSrc = function(self, v)
             self.data.src = v
             self.__update(self)
+            return self
         end
 
         newComponent.SetContent = function(self, v)
             self.data.content = v
             self.__update(self)
+            return self
         end
 
         -- Radios and select can have multiple values
@@ -167,22 +176,26 @@ function Trunks:New(componentType, maybeOptions)
             if (self.data.value == nil) then self.data.value = {} end
             self.data.value = table.insert(self.data.value, v)
             self.__update(self)
+            return self
         end
 
         -- Alerts commons
         newComponent.SetTitle = function(self, v)
             self.data.title = v
             self.__update(self)
+            return self
         end
 
         newComponent.SetCancellable = function(self, v)
             self.data.cancellable = v
             self.__update(self)
+            return self
         end
 
         newComponent.SetHasBlur = function(self, v)
             self.data.hasBlur = v
             self.__update(self)
+            return self
         end
 
         newComponent.GetValue = function(self)

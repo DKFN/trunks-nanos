@@ -44,9 +44,11 @@ Now that you have everything up and running you can go further with:
 -- TODO
 
 - [Hello world](https://dkfn.github.io/trunks-nanos/tuts/helloWorld)
+- [Asking the players name](https://dkfn.github.io/trunks-nanos/tuts/playersName)
 - <strike> [Your first GUI](https://dkfn.github.io/trunks-nanos/tuts/gui1) </strike>
 - <strike> [Your first complex GUI](https://dkfn.github.io/trunks-nanos/tuts/gui2) </strike>
 - <strike> [Displaying images](https://dkfn.github.io/trunks-nanos/tuts/images) </strike>
+- <strike> [Guess the number game](https://dkfn.github.io/trunks-nanos/tuts/numberGuess) </strike>
 - <strike> [Customize the default theme](https://dkfn.github.io/trunks-nanos/tuts/customizecss) </strike>
 - <strike> [Import custom fonts](https://dkfn.github.io/trunks-nanos/tuts/customizefonts) </strike>
 

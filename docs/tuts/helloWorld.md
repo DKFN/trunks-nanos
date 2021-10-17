@@ -32,13 +32,13 @@ helloWorldAlert:SetText("Hello world")
 ```
 
 So let's start the server and look what it looks like in game
-![Hello world alert](../images/helloWorld/hw1.png)
+![Hello world alert](../images/helloWorld/hw1.PNG)
 
 The popup looks really big compared to the content so we are going to make it smaller:
 ```lua
 helloWorldAlert:SetSize(200, 200)
 ```
-![Hello world alert](../images/helloWorld/hw2.png)
+![Hello world alert](../images/helloWorld/hw2.PNG)
 
 Awesome ! But it will be quite inconvenient to let the Alert on screen for ever and there is no way to make it go away for now.
 Let's add user input and a way to close the popup when clicking Ok

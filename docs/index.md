@@ -43,7 +43,7 @@ Now that you have everything up and running you can go further with:
 #### Tutorials
 -- TODO
 
-- [Hellow world](https://dkfn.github.io/trunks-nanos/tuts/helloWorld)
+- [Hello world](https://dkfn.github.io/trunks-nanos/tuts/helloWorld)
 - <strike> [Your first GUI](https://dkfn.github.io/trunks-nanos/tuts/gui1) </strike>
 - <strike> [Your first complex GUI](https://dkfn.github.io/trunks-nanos/tuts/gui2) </strike>
 - <strike> [Displaying images](https://dkfn.github.io/trunks-nanos/tuts/images) </strike>

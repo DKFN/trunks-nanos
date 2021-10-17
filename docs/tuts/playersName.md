@@ -65,6 +65,14 @@ We don't want the player to be able to validate without entering a name so in ca
 
 Giving this final script:
 ```lua
+Package.RequirePackage("trunks-nanos")
+
+Client.SetMouseEnabled(true)
+local plyNameAlert = Trunks:New("QueryAlert")
+                           :SetTitle("Who are you ?")
+                           :SetSize(250, 300)
+                           :SetText("John doe")
+
 plyNameAlert.OnClickOk = function()
     local playerName = plyNameAlert:Value()
     if (playerName == nil) then return end

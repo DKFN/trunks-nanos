@@ -1,4 +1,5 @@
 ### GUI components
+
 | Component name  | Description  |  Image |  Available from version |
 |---|---|---|---|
 | [SimpleAlert]()  | An alert with a text and Ok button |   |  0.0.1 |

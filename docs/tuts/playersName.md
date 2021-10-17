@@ -43,7 +43,9 @@ In the end this gives us a nice alert with a text input:
 ![Hello world alert](../images/playersName/pn1.PNG)
 
 ## Getting the player name when he clicks Ok
-Exactly like the HelloWorld example, we need to specify an `OnClickOk` function to the alert but this time we are retreiving the playerName
+Exactly like the HelloWorld example, we need to specify an `OnClickOk` function to the alert but this time we are retreiving the playerName.
+
+To get the value of the Alert we need to call `Value` function on the Alert's variable
 ```lua
 plyNameAlert.OnClickOk = function()
     local playerName = plyNameAlert:Value()

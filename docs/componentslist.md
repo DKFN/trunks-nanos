@@ -1,4 +1,11 @@
-### Full components list
+### GUI components
+| Component name  | Description  |  Image |  Available from version |
+|---|---|---|---|
+| [SimpleAlert]()  | An alert with a text and Ok button |   |  0.0.1 |
+| [ConfirmAlert]()  |  An alert with "Cancel" and "Confirm" buttons |   |  0.0.1 |
+| [QueryAlert]()  |  An alert asking the user to enter a text |   |  0.0.1 |
+
+### Primitive components
 
 | Component name  | Description  |  Image |  Available from version |
 |---|---|---|---|

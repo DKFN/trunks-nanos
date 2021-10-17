@@ -44,8 +44,8 @@ Awesome ! But it will be quite inconvenient to let the Alert on screen for ever 
 Let's add user input and a way to close the popup when clicking Ok
 
 ## Getting user input
-In order to let the user to move the mouse around we are going to use Nanos World function [`
-Client.SetMouseEnabled`](https://docs.nanos.world/docs/scripting-reference/static-classes/client#setmouseenabled)
+In order to let the user to move the mouse around we are going to use Nanos World function [
+Client.SetMouseEnabled](https://docs.nanos.world/docs/scripting-reference/static-classes/client#setmouseenabled)
 
 Add the following line on top of the script:
 ```lua

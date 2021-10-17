@@ -46,16 +46,19 @@ function Trunks:New(componentType, maybeOptions)
     newComponent.Hide = function(self)
         self.data.hidden = true
         self.__update(self)
+        return self
     end
 
     newComponent.Show = function(self)
         self.data.hidden = false
         self.__update(self)
+        return self
     end
 
     newComponent.Destroy = function(self)
         trunksWindow:CallEvent("TRUNKS_DELETE_COMPONENT", JSON.stringify(self.data))
         self = nil
+        return nil
     end
     --End externals --
 
